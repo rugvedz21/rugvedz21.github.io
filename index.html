@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rugved Zambare - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+  <title>Rugved Zambare | ML Developer & CS Student</title>
+  <meta name="description" content="Rugved Zambare - Machine Learning Developer and Computer Science student specializing in AI systems, computer vision, and full-stack development.">
+  <meta name="keywords" content="Rugved Zambare, Machine Learning, Python, Developer, Portfolio, Computer Science">
+  <meta property="og:title" content="Rugved Zambare | ML Developer & CS Student">
+  <meta property="og:description" content="Machine Learning Developer specializing in AI systems, computer vision, and data-driven solutions.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,44 +24,187 @@
   <div class="nav-container" id="nav">
     <nav>
       <div class="logo" onclick="scrollToSection('hero')">
-        Rugved<span class="accent">.</span>Zambare
+        Rugved<span class="accent">.</span>
       </div>
-      <ul class="nav-links">
-        <li><a href="#" onclick="scrollToSection('portfolio')">Works</a></li>
+      <ul class="nav-links" id="navLinks">
         <li><a href="#" onclick="scrollToSection('about')">About</a></li>
+        <li><a href="#" onclick="scrollToSection('skills')">Skills</a></li>
+        <li><a href="#" onclick="scrollToSection('portfolio')">Projects</a></li>
+        <li><a href="#" onclick="scrollToSection('experience')">Experience</a></li>
         <li><a href="#" onclick="scrollToSection('contact')">Contact</a></li>
       </ul>
-      <button class="hire-btn" onclick="scrollToSection('contact')">Hire Me</button>
+      <div class="nav-right">
+        <a href="resume.pdf" class="resume-btn" target="_blank" download>Resume</a>
+        <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </nav>
   </div>
 
   <!-- Hero Section -->
   <section class="hero" id="hero">
-    <div class="status-badge">
-      <div class="status-dot"></div>
-      <span>Available for new projects</span>
-    </div>
     <div class="hero-content">
-      <h1>
-        Messing <span class="accent">Around</span><br>With Code & Creativity.
-      </h1>
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        <span>Open to opportunities</span>
+      </div>
+      <p class="hero-greeting">Hi, I'm</p>
+      <h1>Rugved Zambare</h1>
+      <h2 class="hero-role">
+        <span id="typed-text"></span><span class="cursor">|</span>
+      </h2>
       <p class="hero-subtitle">
-        Machine learning Developer & Designer specializing in high-end interactive experiences and immersive storytelling through modern code.
+        B.Tech CSE student passionate about building intelligent systems &mdash; from AI-powered grading tools to real-time flood alert platforms. I turn complex problems into clean, working solutions.
       </p>
       <div class="cta-buttons">
-        <a href="#" class="btn btn-primary" onclick="scrollToSection('portfolio')">Explore Work</a>
-        <a href="#" class="btn btn-secondary" onclick="scrollToSection('about')">My Story</a>
+        <a href="#" class="btn btn-primary" onclick="scrollToSection('portfolio')">View My Work</a>
+        <a href="#" class="btn btn-secondary" onclick="scrollToSection('contact')">Get In Touch</a>
+        <a href="resume.pdf" class="btn btn-outline" target="_blank" download>Download CV</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/rugvedz21" target="_blank" aria-label="GitHub">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/rugved-zambare-968a5927b/" target="_blank" aria-label="LinkedIn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://twitter.com/spinythyme" target="_blank" aria-label="Twitter">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+        </a>
+        <a href="mailto:rugvedzambare05@gmail.com" aria-label="Email">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
       </div>
     </div>
-    <div class="scroll-indicator">↓ Scroll</div>
+    <div class="scroll-indicator">
+      <span>Scroll down</span>
+      <div class="scroll-arrow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="section-header">
+      <div class="section-label">01 / About</div>
+      <h2 class="section-title">Who I Am</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-image">
+        <div class="about-image-wrapper">
+          <img src="images/Profile.jpg" alt="Rugved Zambare">
+        </div>
+      </div>
+
+      <div class="about-content">
+        <h3>A developer who ships real things.</h3>
+        <p class="about-text">
+          I'm a third-year B.Tech Computer Science student who discovered a love for building things somewhere between debugging at 2 AM and accidentally breaking my own code. I specialize in <strong>Machine Learning</strong>, <strong>Computer Vision</strong>, and <strong>Data Analysis</strong>, and I enjoy turning ideas into systems that actually work.
+        </p>
+        <p class="about-text">
+          From training models to classify grains to building flood alert systems using anomaly detection, I focus on solving problems that matter. I write clean code, learn fast, and care about building things that are both functional and well-crafted.
+        </p>
+
+        <div class="about-details">
+          <div class="detail-item">
+            <span class="detail-label">Name</span>
+            <span class="detail-value">Rugved Zambare</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Email</span>
+            <span class="detail-value"><a href="mailto:rugvedzambare05@gmail.com">rugvedzambare05@gmail.com</a></span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Education</span>
+            <span class="detail-value">B.Tech CSE (3rd Year)</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Location</span>
+            <span class="detail-value">India</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills" id="skills">
+    <div class="section-header">
+      <div class="section-label">02 / Skills</div>
+      <h2 class="section-title">What I Work With</h2>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <div class="skill-category-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Machine Learning & AI</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">Scikit-learn</span>
+          <span class="skill-tag">CNN</span>
+          <span class="skill-tag">Transfer Learning</span>
+          <span class="skill-tag">NLP</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Programming Languages</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">HTML/CSS</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Data & Visualization</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">Matplotlib</span>
+          <span class="skill-tag">OpenCV</span>
+          <span class="skill-tag">Jupyter</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Tools & Platforms</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Git & GitHub</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">Node.js</span>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Portfolio Section -->
   <section class="portfolio" id="portfolio">
     <div class="section-header">
-      <div class="section-label">Portfolio</div>
-      <h2 class="section-title">SELECTED WORKS</h2>
-      <p class="section-subtitle">01 — 04 Projects</p>
+      <div class="section-label">03 / Projects</div>
+      <h2 class="section-title">What I've Built</h2>
+      <p class="section-subtitle">Each project represents a real problem I wanted to solve.</p>
     </div>
 
     <div class="projects-grid">
@@ -62,23 +212,18 @@
       <div class="project-card" onclick="openModal(1)">
         <div class="project-image">
           <div class="image-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
-            <span>Add Project Image</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
           </div>
-          <!-- To add your image, replace the image-placeholder div with: -->
-          <!-- <img src="images/project1.jpg" alt="Neon Nebula"> -->
         </div>
         <div class="project-content">
-          <div class="project-meta">Machine Learning • 2025</div>
+          <div class="project-meta">Machine Learning &bull; 2025</div>
           <h3 class="project-title">AI Assignment Grading System</h3>
+          <p class="project-desc">Deep learning system using PyTorch & ResNet18 to auto-grade student assignments with 85-95% accuracy, reducing grading time by 80%.</p>
           <div class="project-tags">
-            <span class="tag">Three.js</span>
-            <span class="tag">React</span>
-            <span class="tag">WebGL</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">ResNet18</span>
+            <span class="tag">CNN</span>
+            <span class="tag">Transfer Learning</span>
           </div>
         </div>
       </div>
@@ -87,22 +232,17 @@
       <div class="project-card" onclick="openModal(2)">
         <div class="project-image">
           <div class="image-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
-            <span>Add Project Image</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
           </div>
-          <!-- To add your image, replace the image-placeholder div with: -->
-          <!-- <img src="images/project2.jpg" alt="Quantum Identity"> -->
         </div>
         <div class="project-content">
-          <div class="project-meta">Web Design • 2024</div>
-          <h3 class="project-title">Local Music Player (Spotify-like)</h3>
+          <div class="project-meta">Full Stack &bull; 2024</div>
+          <h3 class="project-title">Local Music Player</h3>
+          <p class="project-desc">Spotify-inspired music player with playlist management, album art, and smooth playback controls built with a modern UI.</p>
           <div class="project-tags">
-            <span class="tag">Branding</span>
-            <span class="tag">Design</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">Web Audio API</span>
           </div>
         </div>
       </div>
@@ -111,22 +251,18 @@
       <div class="project-card" onclick="openModal(3)">
         <div class="project-image">
           <div class="image-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
-            <span>Add Project Image</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
-          <!-- To add your image, replace the image-placeholder div with: -->
-          <!-- <img src="images/project3.jpg" alt="Virtual Archive"> -->
         </div>
         <div class="project-content">
-          <div class="project-meta">Development • 2024</div>
-          <h3 class="project-title"> DWLR Flood Alert System </h3>
+          <div class="project-meta">Data Analysis &bull; 2024</div>
+          <h3 class="project-title">DWLR Flood Alert System</h3>
+          <p class="project-desc">Anomaly detection system analyzing DWLR water-level data using Z-score thresholds, with automated SMTP email alerts.</p>
           <div class="project-tags">
-            <span class="tag">Node.js</span>
-            <span class="tag">MongoDB</span>
+            <span class="tag">Python</span>
+            <span class="tag">Z-Score</span>
+            <span class="tag">Data Analysis</span>
+            <span class="tag">SMTP</span>
           </div>
         </div>
       </div>
@@ -135,95 +271,156 @@
       <div class="project-card" onclick="openModal(4)">
         <div class="project-image">
           <div class="image-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
-            <span>Add Project Image</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
           </div>
-          <!-- To add your image, replace the image-placeholder div with: -->
-          <!-- <img src="images/project4.jpg" alt="Silica Studios"> -->
         </div>
         <div class="project-content">
-          <div class="project-meta">Machine Learning • 2025</div>
+          <div class="project-meta">Computer Vision &bull; 2024</div>
           <h3 class="project-title">Grain Color Sorter</h3>
+          <p class="project-desc">Computer vision pipeline using OpenCV and CNNs for automated grain classification through color detection and segmentation.</p>
           <div class="project-tags">
-            <span class="tag">UX/UI</span>
-            <span class="tag">Interactive</span>
+            <span class="tag">Python</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">CNN</span>
+            <span class="tag">Image Processing</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="about" id="about">
+  <!-- Experience & Education Section -->
+  <section class="experience" id="experience">
     <div class="section-header">
-      <div class="section-label">The Story</div>
-      <h2 class="section-title">MEET THE CREATOR</h2>
+      <div class="section-label">04 / Background</div>
+      <h2 class="section-title">Experience & Education</h2>
     </div>
 
-    <div class="about-grid">
-      <div class="about-image">
-        <div class="about-image-wrapper">
-          <!-- ✅ YOUR IMAGE GOES HERE - Just the img tag, nothing else -->
-          <img src="images/Profile.jpg" alt="Rugved Zambare">
+    <div class="timeline-grid">
+      <!-- Education -->
+      <div class="timeline-column">
+        <h3 class="timeline-heading">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>
+          Education
+        </h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2023 &mdash; Present</div>
+              <h4>B.Tech in Computer Science & Engineering</h4>
+              <p class="timeline-place">University Name</p>
+              <p class="timeline-desc">Focusing on Machine Learning, Data Structures, Algorithms, and Software Engineering. Active contributor to college tech community.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2009 &mdash; 2021</div>
+              <h4> School </h4>
+              <p class="timeline-place">Kamalnayan Bajaj School</p>
+          </div>
+        </div>
+      </div>
+         <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2021 &mdash; 2023</div>
+              <h4> High School </h4>
+              <p class="timeline-place">Vidya valley north point jr</p>
+          </div>
         </div>
       </div>
 
-      <div class="about-content">
-        <h3>How it started</h3>
-        <h2>A STUDENT WITH TOO MANY IDEAS &<br>TOO MUCH FREE TIME.</h2>
-        <p class="about-text">
-          A bunch of random bugs one day, and a curiosity that refused to shut up somewhere between debugging at 2 AM and accidentally breaking my own code I realized I really like building things with code.
-        <p class="about-text">
-          I enjoy turning weird ideas into actual systems—whether it’s training a model to classify grains, building recommendation systems, or making something as simple as a music player feel smooth and fun to use. I also love music and basketball a lot.
-        </p>
-
-        <div class="stats">
-          <div class="stat-item">
-            <h4>Third Year</h4>
-            <p>BTECH CSE</p>
+      <!-- Experience / Activities -->
+      <div class="timeline-column">
+        <h3 class="timeline-heading">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Experience
+        </h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2024 &mdash; Present</div>
+              <h4>ML Developer (Self-directed Projects)</h4>
+              <p class="timeline-place">Independent</p>
+              <p class="timeline-desc">Built end-to-end ML pipelines including an AI grading system (PyTorch/ResNet18) and grain color sorter (OpenCV/CNN). Focused on real-world deployment and accuracy optimization.</p>
+            </div>
           </div>
-          <div class="stat-item">
-            <h4>5</h4>
-            <p>Projects Completed</p>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2024</div>
+              <h4>Data Analysis &mdash; DWLR Flood Alerts</h4>
+              <p class="timeline-place">Academic Project</p>
+              <p class="timeline-desc">Designed anomaly detection pipeline for water-level monitoring using statistical methods (Z-score) with automated email alert system via SMTP.</p>
+            </div>
           </div>
-        </div>
-
-        <div class="social-links">
-          <a href="https://twitter.com/spinythyme" class="social-link" target="_blank" aria-label="Twitter">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-            </svg>
-          </a>
-          <a href="https://github.com/rugvedz21 " class="social-link" target="_blank" aria-label="GitHub">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-            </svg>
-          </a>
-          <a href="https://www.linkedin.com/in/rugved-zambare-968a5927b/" class="social-link" target="_blank" aria-label="LinkedIn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-              <rect x="2" y="9" width="4" height="12"/>
-              <circle cx="4" cy="4" r="2"/>
-            </svg>
-          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="cta-section" id="contact">
-    <div class="cta-marquee">
-      <div class="cta-marquee-inner">RUGVED RUGVED RUGVED RUGVED RUGVED RUGVED </div>
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="section-header">
+      <div class="section-label">05 / Contact</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-subtitle">Have an opportunity, project idea, or just want to say hi? I'd love to hear from you.</p>
     </div>
-    <div class="cta-content">
-      <h2>READY TO BUILD<br>THE <span class="accent">FUTURE?</span></h2>
-      <p>Currently accepting select commissions and collaborative projects for 2024.</p>
-      <a href="/cdn-cgi/l/email-protection#9de4f2e8efddf8f0fcf4f1b3fef2f0" class="btn btn-primary">Let's Talk Shop →</a>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-card">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:rugvedzambare05@gmail.com">rugvedzambare05@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <div>
+            <h4>LinkedIn</h4>
+            <a href="https://www.linkedin.com/in/rugved-zambare-968a5927b/" target="_blank">Rugved Zambare</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          <div>
+            <h4>GitHub</h4>
+            <a href="https://github.com/rugvedz21" target="_blank">github.com/rugvedz21</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <h4>Location</h4>
+            <span>India</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="John Doe" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" placeholder="john@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="Project Inquiry / Job Opportunity">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell me about your project or opportunity..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+      </form>
     </div>
   </section>
 
@@ -231,29 +428,30 @@
   <footer>
     <div class="footer-content">
       <div class="footer-brand">
-        <h3>Creative<span class="accent">.</span>Dev</h3>
-        <p>© 2026 Built with coffee and a lot of coffee.</p>
+        <h3>Rugved<span class="accent">.</span>Zambare</h3>
+        <p>ML Developer & CS Student building intelligent systems that solve real problems.</p>
       </div>
       <div class="footer-links">
-        <h4>Navigation</h4>
+        <h4>Quick Links</h4>
         <ul>
-          <li><a href="#" onclick="scrollToSection('portfolio')">Works</a></li>
           <li><a href="#" onclick="scrollToSection('about')">About</a></li>
+          <li><a href="#" onclick="scrollToSection('skills')">Skills</a></li>
+          <li><a href="#" onclick="scrollToSection('portfolio')">Projects</a></li>
           <li><a href="#" onclick="scrollToSection('contact')">Contact</a></li>
         </ul>
       </div>
       <div class="footer-links">
-        <h4>Connect</h4>
+        <h4>Socials</h4>
         <ul>
-          <li><a href="https://twitter.com/yourhandle" target="_blank">Twitter</a></li>
-          <li><a href="https://github.com/yourhandle" target="_blank">GitHub</a></li>
-          <li><a href="https://dribbble.com/yourhandle" target="_blank">Dribbble</a></li>
-          <li><a href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a></li>
+          <li><a href="https://github.com/rugvedz21" target="_blank">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/rugved-zambare-968a5927b/" target="_blank">LinkedIn</a></li>
+          <li><a href="https://twitter.com/spinythyme" target="_blank">Twitter</a></li>
+          <li><a href="mailto:rugvedzambare05@gmail.com">Email</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <div>Made with ♥ for creative minds</div>
+      <div>&copy; 2026 Rugved Zambare. All rights reserved.</div>
       <div id="localTime">Loading time...</div>
     </div>
   </footer>
@@ -261,21 +459,11 @@
   <!-- Project Modal -->
   <div class="modal" id="projectModal">
     <div class="modal-content">
-      <button class="modal-close" onclick="closeModal()">×</button>
-      <div class="modal-image">
-        <div class="image-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-            <circle cx="8.5" cy="8.5" r="1.5"/>
-            <polyline points="21 15 16 10 5 21"/>
-          </svg>
-          <span>Project Image</span>
-        </div>
-      </div>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
       <div id="modalContent"></div>
     </div>
   </div>
 
-  <script data-cfasync="false" src="script.js"></script>
+  <script src="script.js"></script>
 </body>
-</html> 
+</html>
