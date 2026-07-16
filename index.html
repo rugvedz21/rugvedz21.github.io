@@ -35,7 +35,7 @@
       </ul>
       <div class="nav-right">
         <a href="resume.pdf" class="resume-btn" target="_blank" download>Resume</a>
-        <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+        <button class="hamburger" id="hamburger" onclick="toggleInfiniteMenu()" aria-label="Toggle menu">
           <span></span>
           <span></span>
           <span></span>
@@ -52,7 +52,10 @@
         <span>Open to opportunities</span>
       </div>
       <p class="hero-greeting">Hi, I'm</p>
-      <h1>Rugved Zambare</h1>
+      <div class="particle-title">
+        <canvas id="particleCanvas" aria-hidden="true"></canvas>
+        <h1 class="sr-only">Rugved Zambare</h1>
+      </div>
       <h2 class="hero-role">
         <span id="typed-text"></span><span class="cursor">|</span>
       </h2>
@@ -96,9 +99,18 @@
 
     <div class="about-grid">
       <div class="about-image">
-        <div class="about-image-wrapper">
-          <img src="images/Profile.jpg" alt="Rugved Zambare">
+        <div class="lanyard-scene" id="lanyardScene">
+          <canvas id="lanyardCanvas" aria-hidden="true"></canvas>
+          <div class="lanyard-card" id="lanyardCard">
+            <div class="lanyard-hole"></div>
+            <img src="images/Profile.jpg" alt="Rugved Zambare" draggable="false">
+            <div class="lanyard-card-info">
+              <strong>Rugved Zambare</strong>
+              <span>ML Developer &bull; CSE</span>
+            </div>
+          </div>
         </div>
+        <p class="lanyard-hint">psst &mdash; grab the badge</p>
       </div>
 
       <div class="about-content">
@@ -296,6 +308,19 @@
       <h2 class="section-title">Experience & Education</h2>
     </div>
 
+    <div class="evil-eye-wrap" aria-hidden="true">
+      <div class="evil-eye" id="evilEye">
+        <div class="ee-white">
+          <div class="ee-iris" id="evilEyeIris">
+            <div class="ee-pupil"></div>
+            <div class="ee-glint"></div>
+          </div>
+        </div>
+        <div class="ee-lid"></div>
+      </div>
+      <p class="evil-eye-caption">keeping an eye on my journey</p>
+    </div>
+
     <div class="timeline-grid">
       <!-- Education -->
       <div class="timeline-column">
@@ -364,6 +389,7 @@
 
   <!-- Contact Section -->
   <section class="contact" id="contact">
+    <div class="magnet-lines" id="magnetLines" aria-hidden="true"></div>
     <div class="section-header">
       <div class="section-label">05 / Contact</div>
       <h2 class="section-title">Let's Connect</h2>
@@ -456,6 +482,12 @@
     </div>
   </footer>
 
+  <!-- Infinite Menu Overlay -->
+  <div class="infinite-menu" id="infiniteMenu" aria-hidden="true">
+    <div class="infinite-menu-track" id="infiniteMenuTrack"></div>
+    <div class="infinite-menu-hint">drag or scroll &bull; click to jump</div>
+  </div>
+
   <!-- Project Modal -->
   <div class="modal" id="projectModal">
     <div class="modal-content">
@@ -465,5 +497,6 @@
   </div>
 
   <script src="script.js"></script>
+  <script src="effects.js"></script>
 </body>
 </html>
