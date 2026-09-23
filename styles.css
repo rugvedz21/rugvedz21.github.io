@@ -913,7 +913,7 @@ img { max-width: 100%; }
   right: 0;
   bottom: 0;
   z-index: 50;
-  max-height: 78vh;
+  max-height: 92vh;
   background: var(--panel-bg);
   border-top: 4px solid var(--accent);
   border-radius: 14px 14px 0 0;
@@ -972,14 +972,71 @@ img { max-width: 100%; }
   flex-wrap: wrap;
 }
 
+.avatar-btn {
+  position: relative;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: zoom-in;
+  border-radius: 10px;
+}
+.avatar-btn:active { transform: scale(0.97); }
+
 .pixel-avatar {
-  width: 96px;
-  height: 96px;
+  width: 132px;
+  height: 132px;
   object-fit: cover;
   border: 3px solid var(--accent);
-  border-radius: 8px;
+  border-radius: 10px;
   image-rendering: pixelated;
-  flex-shrink: 0;
+  display: block;
+}
+
+.avatar-zoom-hint {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  border: 2px solid var(--panel-bg);
+  border-radius: 50%;
+  font-size: 0.8rem;
+}
+
+/* ---- photo lightbox ---- */
+
+.img-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(5, 4, 12, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  padding: 2rem;
+}
+.img-lightbox.open { opacity: 1; visibility: visible; }
+.img-lightbox img {
+  max-width: min(90vw, 480px);
+  max-height: 80vh;
+  object-fit: contain;
+  border: 3px solid var(--accent);
+  border-radius: 12px;
+  image-rendering: auto;
+  box-shadow: 0 0 60px var(--accent-glow);
+}
+.lightbox-close {
+  position: fixed;
+  top: calc(1rem + var(--safe-top));
+  right: calc(1rem + var(--safe-right));
 }
 
 .fact-grid {
@@ -1258,5 +1315,7 @@ img { max-width: 100%; }
   .dpad-right { left: 74px; }
   .a-btn { width: 56px; height: 56px; font-size: 0.95rem; }
   .boot-logo { line-height: 1.35; }
-  .about-row { flex-direction: column; align-items: flex-start; }
+  .about-row { flex-direction: column; align-items: center; text-align: center; }
+  .fact-grid { align-items: center; }
+  .fact-grid > div { align-items: center; }
 }

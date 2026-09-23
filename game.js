@@ -106,6 +106,9 @@ const dialogClose = $('#dialogClose');
 const dialogIcon = $('#dialogIcon');
 const dialogTitle = $('#dialogTitle');
 const aBtn = $('#aBtn');
+const avatarBtn = $('#avatarBtn');
+const imgLightbox = $('#imgLightbox');
+const lightboxClose = $('#lightboxClose');
 
 const poiEls = Array.from(document.querySelectorAll('.poi'));
 
@@ -148,6 +151,7 @@ window.addEventListener('keydown', (e) => {
     if (state.nearPoi) openDialog(state.nearPoi);
   }
   if (e.key === 'Escape') {
+    closeLightbox();
     closeDialog();
     closeQuestLog();
   }
@@ -383,6 +387,28 @@ function closeDialog() {
 
 dialogClose.addEventListener('click', closeDialog);
 dialogBackdrop.addEventListener('click', closeDialog);
+
+/* ===================================
+   PHOTO LIGHTBOX
+   =================================== */
+
+function openLightbox() {
+  imgLightbox.classList.add('open');
+  imgLightbox.setAttribute('aria-hidden', 'false');
+  beep(560, 0.08);
+}
+function closeLightbox() {
+  if (!imgLightbox.classList.contains('open')) return;
+  imgLightbox.classList.remove('open');
+  imgLightbox.setAttribute('aria-hidden', 'true');
+  beep(340, 0.07);
+}
+
+if (avatarBtn) avatarBtn.addEventListener('click', openLightbox);
+lightboxClose.addEventListener('click', closeLightbox);
+imgLightbox.addEventListener('click', (e) => {
+  if (e.target === imgLightbox) closeLightbox();
+});
 
 /* ===================================
    EXPLORATION / XP
