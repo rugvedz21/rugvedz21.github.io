@@ -4,10 +4,10 @@
 
 const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const WORLD_W = 2000;
-const WORLD_H = 1300;
-const PLAYER_SPEED = 260; // px/sec, world units
-const INTERACT_RADIUS = 95;
+const WORLD_W = 3000;
+const WORLD_H = 1950;
+const PLAYER_SPEED = 300; // px/sec, world units
+const INTERACT_RADIUS = 130;
 
 const POI_META = {
   'about':              { icon: '🏠', title: 'About Me' },
@@ -44,7 +44,7 @@ const QUEST_LOG_ORDER = [
    =================================== */
 
 const state = {
-  x: 1000, y: 700,
+  x: 1500, y: 1050,
   keys: { up: false, down: false, left: false, right: false },
   walkTarget: null,
   facing: 'right',
@@ -158,14 +158,31 @@ window.addEventListener('keyup', (e) => {
   if (dir) state.keys[dir] = false;
 });
 
+// Pointer capture keeps the button "pressed" even if the finger drifts off
+// its small hit area mid-press — without it, touch d-pads glitch/stutter
+// because pointerleave fires the instant the finger wobbles a few pixels.
 document.querySelectorAll('.dpad-btn').forEach((btn) => {
   const dir = btn.dataset.dir;
-  const press = (e) => { e.preventDefault(); state.keys[dir] = true; state.walkTarget = null; btn.classList.add('pressed'); };
-  const release = (e) => { if (e) e.preventDefault(); state.keys[dir] = false; btn.classList.remove('pressed'); };
+  const press = (e) => {
+    e.preventDefault();
+    try { btn.setPointerCapture(e.pointerId); } catch (_) { /* unsupported */ }
+    state.keys[dir] = true;
+    state.walkTarget = null;
+    btn.classList.add('pressed');
+  };
+  const release = (e) => {
+    if (e) e.preventDefault();
+    state.keys[dir] = false;
+    btn.classList.remove('pressed');
+  };
   btn.addEventListener('pointerdown', press);
   btn.addEventListener('pointerup', release);
-  btn.addEventListener('pointerleave', release);
   btn.addEventListener('pointercancel', release);
+  // Fallback for browsers without pointer capture support (rare):
+  // only release on leave if this pointer was never captured.
+  btn.addEventListener('pointerleave', (e) => {
+    if (!btn.hasPointerCapture || !btn.hasPointerCapture(e.pointerId)) release(e);
+  });
 });
 
 aBtn.addEventListener('click', () => {
@@ -452,6 +469,26 @@ menuBtn.addEventListener('click', openQuestLog);
 questLogClose.addEventListener('click', closeQuestLog);
 questLog.addEventListener('click', (e) => {
   if (e.target === questLog) closeQuestLog();
+});
+
+/* ===================================
+   ACCORDIONS (skill categories & project "Full Details")
+   =================================== */
+
+document.addEventListener('click', (e) => {
+  const header = e.target.closest('.acc-header');
+  if (!header) return;
+  const item = header.closest('.acc-item');
+  const group = item.closest('.acc-group');
+  const wasOpen = item.classList.contains('open');
+
+  if (group) {
+    group.querySelectorAll('.acc-item.open').forEach((el) => {
+      if (el !== item) el.classList.remove('open');
+    });
+  }
+  item.classList.toggle('open', !wasOpen);
+  beep(wasOpen ? 380 : 480, 0.06);
 });
 
 /* ===================================
