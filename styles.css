@@ -759,6 +759,45 @@ img { max-width: 100%; }
 }
 
 /* ===================================
+   MINIMAP
+   =================================== */
+
+.minimap {
+  position: fixed;
+  top: calc(64px + var(--safe-top));
+  right: calc(0.75rem + var(--safe-right));
+  z-index: 30;
+  width: 112px;
+  height: 74px;
+  background: var(--panel-bg);
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  padding: 3px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.minimap:active { transform: translateY(1px); }
+.minimap canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 3px;
+}
+.minimap-label {
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-pixel);
+  font-size: 0.42rem;
+  letter-spacing: 1px;
+  background: var(--accent);
+  color: var(--ink);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+/* ===================================
    TIP BUBBLE
    =================================== */
 
@@ -1263,23 +1302,6 @@ img { max-width: 100%; }
   flex-wrap: wrap;
 }
 .quest-card-head h3 { font-size: 0.9rem; flex: 1; min-width: 140px; }
-.quest-check {
-  width: 20px; height: 20px;
-  background: var(--success);
-  color: var(--bg-night);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.7rem; flex-shrink: 0;
-}
-.quest-level {
-  font-family: var(--font-pixel);
-  font-size: 0.5rem;
-  background: var(--warn);
-  color: var(--bg-night);
-  padding: 3px 6px;
-  border-radius: 3px;
-  flex-shrink: 0;
-}
 .quest-date {
   font-size: 0.68rem;
   color: var(--ink-dim);

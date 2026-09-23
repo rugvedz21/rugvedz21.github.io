@@ -16,27 +16,37 @@ const POI_META = {
   'project-grader':      { icon: '✅', title: 'AI Assignment Grader' },
   'project-nova':        { icon: '✋', title: 'NOVA' },
   'project-ar':          { icon: '🍽️', title: 'AR Food Menu — The Golden Oak' },
-  'experience':          { icon: '🛡️', title: 'Guild Hall — Experience' },
+  'experience':          { icon: '🛡️', title: 'Experience' },
   'education':           { icon: '🎓', title: 'Academy — Education' },
   'contact':             { icon: '✉️', title: 'Contact' }
 };
 
 const GREETINGS = {
   'about': "Hey! I'm Rugved — an ML dev who ships real things, not just notebooks.",
-  'skills': "Here's what's stocked in my inventory.",
-  'project-stackmind': "A fine-tuned LLM quest — taught Qwen3 to stop hallucinating.",
+  'skills': "Here's what I work with.",
+  'project-stackmind': "A fine-tuned LLM that learned to stop hallucinating.",
   'project-grader': "Built a grading engine so fast it reads assignments in milliseconds.",
   'project-nova': "Control Spotify with just your hand. No clicks, no touching.",
   'project-ar': "Life-size 3D food, floating on your actual table. No app required.",
-  'experience': "Quests I've already completed out in the real world.",
-  'education': "The dungeons I've been leveling up in since 2009.",
-  'contact': "Got a quest for me? Send a signal."
+  'experience': "A look at my experience outside the classroom.",
+  'education': "Where I've studied, from school to college.",
+  'contact': "Want to get in touch? Here's how."
 };
 
 const QUEST_LOG_ORDER = [
   'about', 'skills',
   'project-stackmind', 'project-grader', 'project-nova', 'project-ar',
   'experience', 'education', 'contact'
+];
+
+// World-space centers of each building, for the minimap dots.
+const MINIMAP_ZONES = [
+  { x: 1148, y: 713, color: '#8b83ff' },  // about house
+  { x: 525, y: 1020, color: '#4ade80' },  // skills hut
+  { x: 1463, y: 300, color: '#f0b429' },  // academy (education)
+  { x: 2243, y: 720, color: '#e05d5d' },  // guild hall (experience)
+  { x: 1515, y: 1545, color: '#22d3ee' }, // project arcade
+  { x: 2498, y: 1343, color: '#f472b6' }  // mailbox (contact)
 ];
 
 /* ===================================
@@ -106,6 +116,8 @@ const dialogClose = $('#dialogClose');
 const dialogIcon = $('#dialogIcon');
 const dialogTitle = $('#dialogTitle');
 const aBtn = $('#aBtn');
+const minimapBtn = $('#minimapBtn');
+const minimapCanvas = $('#minimapCanvas');
 const avatarBtn = $('#avatarBtn');
 const imgLightbox = $('#imgLightbox');
 const lightboxClose = $('#lightboxClose');
@@ -126,6 +138,7 @@ startBtn.addEventListener('click', () => {
   updateXpUI();
   positionPlayer();
   updateCamera();
+  setupMinimap();
   startLoop();
   setTimeout(() => tip.classList.add('hidden'), 6000);
 }, { once: true });
@@ -306,9 +319,59 @@ function loop(now) {
   positionPlayer();
   updateCamera();
   updateProximity();
+  drawMinimap();
 
   state.raf = requestAnimationFrame(loop);
 }
+
+/* ===================================
+   MINIMAP
+   =================================== */
+
+let minimapCtx = null;
+
+function setupMinimap() {
+  if (!minimapCanvas) return;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const cssW = minimapCanvas.clientWidth || 112;
+  const cssH = minimapCanvas.clientHeight || 74;
+  minimapCanvas.width = cssW * dpr;
+  minimapCanvas.height = cssH * dpr;
+  minimapCtx = minimapCanvas.getContext('2d');
+  minimapCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  minimapCtx.__w = cssW;
+  minimapCtx.__h = cssH;
+}
+
+function drawMinimap() {
+  if (!minimapCtx) return;
+  const w = minimapCtx.__w, h = minimapCtx.__h;
+  const sx = w / WORLD_W, sy = h / WORLD_H;
+
+  minimapCtx.fillStyle = '#2f6b3a';
+  minimapCtx.fillRect(0, 0, w, h);
+
+  MINIMAP_ZONES.forEach((z) => {
+    minimapCtx.fillStyle = z.color;
+    minimapCtx.beginPath();
+    minimapCtx.arc(z.x * sx, z.y * sy, 3, 0, Math.PI * 2);
+    minimapCtx.fill();
+  });
+
+  minimapCtx.beginPath();
+  minimapCtx.arc(state.x * sx, state.y * sy, 3, 0, Math.PI * 2);
+  minimapCtx.fillStyle = '#ffffff';
+  minimapCtx.fill();
+  minimapCtx.lineWidth = 1;
+  minimapCtx.strokeStyle = '#0d0b1e';
+  minimapCtx.stroke();
+}
+
+window.addEventListener('resize', () => {
+  if (minimapCtx) setupMinimap();
+});
+
+if (minimapBtn) minimapBtn.addEventListener('click', () => openQuestLog());
 
 /* ===================================
    PROXIMITY / INTERACT PROMPT
